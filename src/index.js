@@ -1,13 +1,13 @@
-require('dotenv').config({path: './env'})
+import dotenv from "dotenv";
+dotenv.config();
 import mongoose from 'mongoose';
-import { DB_NAME } from './constants';
 import express from 'express';
 
 const app = express()
 
 ;( async ()=>{
     try{
-        const connection_instance = mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
+        const connection_instance = mongoose.connect(`${process.env.MONGODB_URI}/${process.env.DB_NAME}`)
         console.log(`\nMongoDB  Connection Sccuessfull, DB HOST: ${connection_instance}`)
         app.on("error", (error) => {
             console.error("Error: ",error)
